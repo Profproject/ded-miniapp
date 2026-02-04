@@ -2,46 +2,46 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rap Deds</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🔥 Rap Deds</h1>
+<h1 class="title">🔥 Rap Deds</h1>
 
 <div class="grid">
-  <div class="card" onclick="openVideo('ded1.mp4')">
-    <div class="thumb">▶</div>
-    <p>Убийца Тюльки</p>
+
+  <div class="card">
+    <video src="videos/ded1.mp4" controls preload="metadata"></video>
+    <h3>Убийца Тюльки</h3>
+    <button onclick="order()">Заказать видео</button>
   </div>
 
-  <div class="card" onclick="openVideo('ded2.mp4')">
-    <div class="thumb">▶</div>
-    <p>Гуру Улиц</p>
+  <div class="card">
+    <video src="videos/ded2.mp4" controls preload="metadata"></video>
+    <h3>Гуру Улиц</h3>
+    <button onclick="order()">Заказать видео</button>
   </div>
 
-  <div class="card" onclick="openVideo('ded3.mp4')">
-    <div class="thumb">▶</div>
-    <p>МС Вампир</p>
+  <div class="card">
+    <video src="videos/ded3.mp4" controls preload="metadata"></video>
+    <h3>МС Вампир</h3>
+    <button onclick="order()">Заказать видео</button>
   </div>
 
-  <div class="card" onclick="openVideo('ded4.mp4')">
-    <div class="thumb">▶</div>
-    <p>Опасный Дворовец</p>
+  <div class="card">
+    <video src="videos/ded4.mp4" controls preload="metadata"></video>
+    <h3>Опасный Дворовец</h3>
+    <button onclick="order()">Заказать видео</button>
   </div>
 
-  <div class="card" onclick="openVideo('ded5.mp4')">
-    <div class="thumb">▶</div>
-    <p>Колючий Салодав</p>
+  <div class="card">
+    <video src="videos/ded5.mp4" controls preload="metadata"></video>
+    <h3>Колючий Салодав</h3>
+    <button onclick="order()">Заказать видео</button>
   </div>
-</div>
 
-<!-- Модалка -->
-<div id="modal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <video id="player" controls playsinline></video>
-  </div>
 </div>
 
 <script src="app.js"></script>
