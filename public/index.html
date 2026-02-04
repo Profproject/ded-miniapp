@@ -1,183 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rap Deds</title>
-
-<style>
-body {
-  margin: 0;
-  background: #0b0b0b;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* 18+ */
-#ageGate {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-#ageGate button {
-  padding: 16px 28px;
-  font-size: 20px;
-  background: red;
-  border: none;
-  border-radius: 12px;
-  color: #fff;
-}
-
-/* GRID */
-h1 {
-  text-align: center;
-  margin: 20px 0;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  padding: 14px;
-}
-.card {
-  background: #151515;
-  border-radius: 14px;
-  padding: 10px;
-}
-.card video {
-  width: 100%;
-  border-radius: 12px;
-}
-.card h3 {
-  margin: 8px 0;
-}
-.card button {
-  width: 100%;
-  padding: 10px;
-  background: red;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-}
-
-/* MODAL */
-#orderModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  align-items: center;
-  justify-content: center;
-}
-.modalBox {
-  background: #111;
-  padding: 20px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 400px;
-}
-.modalBox textarea {
-  width: 100%;
-  height: 100px;
-  border-radius: 10px;
-  padding: 10px;
-}
-.modalActions {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-.modalActions button {
-  flex: 1;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: none;
-}
-.pay { background: red; color: #fff; }
-.cancel { background: #444; color: #fff; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Rap Deds</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-<!-- 18+ -->
-<div id="ageGate">
-  <h2>🔞 Контент 18+</h2>
-  <button onclick="accept18()">Мне есть 18</button>
-</div>
 
 <h1>🔥 Rap Deds</h1>
 
 <div class="grid">
-  <div class="card">
-    <video src="videos/ded1.mp4" controls></video>
-    <h3>Убийца Тюльки</h3>
-    <button onclick="openOrder('Убийца Тюльки')">Заказать видео</button>
+  <div class="card" onclick="openVideo('ded1.mp4')">
+    <div class="thumb">▶</div>
+    <p>Убийца Тюльки</p>
   </div>
 
-  <div class="card">
-    <video src="videos/ded2.mp4" controls></video>
-    <h3>Гуру Улиц</h3>
-    <button onclick="openOrder('Гуру Улиц')">Заказать видео</button>
+  <div class="card" onclick="openVideo('ded2.mp4')">
+    <div class="thumb">▶</div>
+    <p>Гуру Улиц</p>
   </div>
 
-  <div class="card">
-    <video src="videos/ded3.mp4" controls></video>
-    <h3>МС Вампир</h3>
-    <button onclick="openOrder('МС Вампир')">Заказать видео</button>
+  <div class="card" onclick="openVideo('ded3.mp4')">
+    <div class="thumb">▶</div>
+    <p>МС Вампир</p>
   </div>
 
-  <div class="card">
-    <video src="videos/ded4.mp4" controls></video>
-    <h3>Опасный Дворовец</h3>
-    <button onclick="openOrder('Опасный Дворовец')">Заказать видео</button>
+  <div class="card" onclick="openVideo('ded4.mp4')">
+    <div class="thumb">▶</div>
+    <p>Опасный Дворовец</p>
   </div>
 
-  <div class="card">
-    <video src="videos/ded5.mp4" controls></video>
-    <h3>Колючий Салодав</h3>
-    <button onclick="openOrder('Колючий Салодав')">Заказать видео</button>
+  <div class="card" onclick="openVideo('ded5.mp4')">
+    <div class="thumb">▶</div>
+    <p>Колючий Салодав</p>
   </div>
 </div>
 
-<!-- MODAL -->
-<div id="orderModal">
-  <div class="modalBox">
-    <h3 id="orderTitle"></h3>
-    <textarea placeholder="О чём читать рэп?"></textarea>
-    <div class="modalActions">
-      <button class="pay">Оплатить 2.5 TON</button>
-      <button class="cancel" onclick="closeOrder()">Отмена</button>
-    </div>
+<!-- Модалка -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <video id="player" controls playsinline></video>
   </div>
 </div>
 
-<script>
-function accept18() {
-  localStorage.setItem('age18', 'yes');
-  document.getElementById('ageGate').style.display = 'none';
-}
-
-if (localStorage.getItem('age18') === 'yes') {
-  document.getElementById('ageGate').style.display = 'none';
-}
-
-function openOrder(name) {
-  document.getElementById('orderTitle').innerText = name;
-  document.getElementById('orderModal').style.display = 'flex';
-}
-
-function closeOrder() {
-  document.getElementById('orderModal').style.display = 'none';
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
