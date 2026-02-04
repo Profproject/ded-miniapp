@@ -1,88 +1,46 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rap Deds</title>
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-  <!-- Telegram Mini App -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin: 20px 0;
+}
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 16px;
+}
 
-<h1 class="title">🔥 Rap Deds</h1>
+.card {
+  background: #111;
+  border-radius: 16px;
+  padding: 12px;
+}
 
-<div class="grid">
+video {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+}
 
-  <!-- Дед 1 -->
-  <div class="card">
-    <video
-      src="videos/ded1.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      onclick="playVideo(this)">
-    </video>
-    <div class="name">Убийца Тюльки</div>
-    <button onclick="order('Убийца Тюльки')">Заказать видео</button>
-  </div>
+.name {
+  margin: 10px 0;
+  font-size: 18px;
+}
 
-  <!-- Дед 2 -->
-  <div class="card">
-    <video
-      src="videos/ded2.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      onclick="playVideo(this)">
-    </video>
-    <div class="name">Гуру Улиц</div>
-    <button onclick="order('Гуру Улиц')">Заказать видео</button>
-  </div>
-
-  <!-- Дед 3 -->
-  <div class="card">
-    <video
-      src="videos/ded3.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      onclick="playVideo(this)">
-    </video>
-    <div class="name">MC Вампир</div>
-    <button onclick="order('MC Вампир')">Заказать видео</button>
-  </div>
-
-  <!-- Дед 4 -->
-  <div class="card">
-    <video
-      src="videos/ded4.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      onclick="playVideo(this)">
-    </video>
-    <div class="name">Опасный Дворовец</div>
-    <button onclick="order('Опасный Дворовец')">Заказать видео</button>
-  </div>
-
-  <!-- Дед 5 -->
-  <div class="card">
-    <video
-      src="videos/ded5.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      onclick="playVideo(this)">
-    </video>
-    <div class="name">Колючий Салодав</div>
-    <button onclick="order('Колючий Салодав')">Заказать видео</button>
-  </div>
-
-</div>
-
-<script src="app.js"></script>
-</body>
-</html>
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: red;
+  color: #fff;
+  font-size: 16px;
+}
