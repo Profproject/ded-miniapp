@@ -7,120 +7,113 @@
   <style>
     body {
       margin: 0;
-      background: #0e0e0e;
-      color: #fff;
+      background: #0f0f0f;
+      color: white;
       font-family: Arial, sans-serif;
     }
-    .screen {
-      padding: 16px;
-    }
-    h2 {
-      margin-top: 0;
+    h1 {
       text-align: center;
+      margin: 20px 0;
     }
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
+      padding: 12px;
     }
     .card {
       background: #1a1a1a;
       border-radius: 12px;
       overflow: hidden;
-      text-align: center;
     }
     video {
       width: 100%;
       display: block;
+      background: black;
     }
-    .name {
-      padding: 8px;
+    .title {
+      padding: 10px;
+      text-align: center;
       font-weight: bold;
     }
-    button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      background: #ff2e2e;
-      color: #fff;
-      font-size: 14px;
-    }
+
     /* 18+ */
-    #age {
-      height: 100vh;
+    #adult {
+      position: fixed;
+      inset: 0;
+      background: black;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      z-index: 999;
     }
-    .box {
-      max-width: 320px;
+    #adult button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: red;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-<!-- 18+ -->
-<div id="age">
-  <div class="box">
-    <h2>⚠️ 18+</h2>
-    <p>Контент содержит ненормативную лексику.</p>
-    <button onclick="enter()">Мне есть 18</button>
-  </div>
+<div id="adult">
+  <h2>🔞 Контент 18+</h2>
+  <p>Подтвердите, что вам есть 18 лет</p>
+  <button onclick="confirmAdult()">Мне есть 18</button>
 </div>
 
-<!-- APP -->
-<div id="app" style="display:none;">
-  <div class="screen">
-    <h2>🔥 Rap Deds</h2>
+<h1>🔥 Rap Deds</h1>
 
-    <div class="grid">
-      <div class="card">
-        <video src="videos/ded1.mp4" controls></video>
-        <div class="name">Дед Вампир</div>
-        <button>Заказать видео</button>
-      </div>
+<div class="grid">
+  <div class="card">
+    <video controls preload="metadata">
+      <source src="videos/ded1.mp4" type="video/mp4">
+    </video>
+    <div class="title">Дед 1</div>
+  </div>
 
-      <div class="card">
-        <video src="videos/ded2.mp4" controls></video>
-        <div class="name">Дед Гопник</div>
-        <button>Заказать видео</button>
-      </div>
+  <div class="card">
+    <video controls preload="metadata">
+      <source src="videos/ded2.mp4" type="video/mp4">
+    </video>
+    <div class="title">Дед 2</div>
+  </div>
 
-      <div class="card">
-        <video src="videos/ded3.mp4" controls></video>
-        <div class="name">Дед Философ</div>
-        <button>Заказать видео</button>
-      </div>
+  <div class="card">
+    <video controls preload="metadata">
+      <source src="videos/ded3.mp4" type="video/mp4">
+    </video>
+    <div class="title">Дед 3</div>
+  </div>
 
-      <div class="card">
-        <video src="videos/ded4.mp4" controls></video>
-        <div class="name">Дед Алкаш</div>
-        <button>Заказать видео</button>
-      </div>
+  <div class="card">
+    <video controls preload="metadata">
+      <source src="videos/ded4.mp4" type="video/mp4">
+    </video>
+    <div class="title">Дед 4</div>
+  </div>
 
-      <div class="card">
-        <video src="videos/ded5.mp4" controls></video>
-        <div class="name">Дед Рэпер</div>
-        <button>Заказать видео</button>
-      </div>
-    </div>
+  <div class="card">
+    <video controls preload="metadata">
+      <source src="videos/ded5.mp4" type="video/mp4">
+    </video>
+    <div class="title">Дед 5</div>
   </div>
 </div>
 
 <script>
-  if (localStorage.getItem('age_ok')) {
-    showApp();
+  function confirmAdult() {
+    localStorage.setItem("adultConfirmed", "yes");
+    document.getElementById("adult").style.display = "none";
   }
 
-  function enter() {
-    localStorage.setItem('age_ok', '1');
-    showApp();
-  }
-
-  function showApp() {
-    document.getElementById('age').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
+  if (localStorage.getItem("adultConfirmed") === "yes") {
+    document.getElementById("adult").style.display = "none";
   }
 </script>
 
