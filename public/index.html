@@ -1,120 +1,180 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rap Deds</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0f0f0f;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    h1 {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding: 12px;
-    }
-    .card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    video {
-      width: 100%;
-      display: block;
-      background: black;
-    }
-    .title {
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rap Deds</title>
 
-    /* 18+ */
-    #adult {
-      position: fixed;
-      inset: 0;
-      background: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    #adult button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background: red;
-      color: white;
-    }
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Russo One', sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+}
+.hidden{display:none}
+
+h1{
+  text-align:center;
+  font-size:32px;
+  margin:20px 0;
+}
+
+button{
+  font-family:'Russo One', sans-serif;
+  border:none;
+  border-radius:12px;
+  padding:14px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.primary{
+  background:#ff2b2b;
+  color:#fff;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+
+.modal-content{
+  background:#111;
+  padding:24px;
+  border-radius:16px;
+  max-width:420px;
+  width:90%;
+  text-align:center;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:16px;
+  padding:16px;
+}
+
+.card{
+  background:#151515;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.card video{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.card-title{
+  padding:10px;
+  text-align:center;
+  font-size:14px;
+}
+
+.card button{
+  width:100%;
+  border-radius:0;
+}
+textarea{
+  width:100%;
+  min-height:120px;
+  border-radius:12px;
+  padding:12px;
+  font-size:14px;
+}
+</style>
 </head>
+
 <body>
 
-<div id="adult">
-  <h2>🔞 Контент 18+</h2>
-  <p>Подтвердите, что вам есть 18 лет</p>
-  <button onclick="confirmAdult()">Мне есть 18</button>
+<!-- 18+ -->
+<div id="ageModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>⚠️ 18+</h2>
+    <p>Ненормативная лексика<br>Пародия и юмор</p>
+    <button class="primary" onclick="confirmAge()">Мне есть 18</button>
+  </div>
+</div>
+
+<!-- ЗАКАЗ -->
+<div id="orderModal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="orderTitle"></h2>
+    <textarea placeholder="О чём читать рэп?"></textarea>
+    <button class="primary" style="margin-top:10px" onclick="fakePay()">Оплатить 2.5 TON</button>
+    <button style="margin-top:8px" onclick="closeOrder()">Отмена</button>
+  </div>
 </div>
 
 <h1>🔥 Rap Deds</h1>
 
 <div class="grid">
-  <div class="card">
-    <video controls preload="metadata">
-      <source src="videos/ded1.mp4" type="video/mp4">
-    </video>
-    <div class="title">Дед 1</div>
-  </div>
 
-  <div class="card">
-    <video controls preload="metadata">
-      <source src="videos/ded2.mp4" type="video/mp4">
-    </video>
-    <div class="title">Дед 2</div>
-  </div>
+<div class="card">
+  <video src="videos/ded1.mp4" controls></video>
+  <div class="card-title">Убийца Тюльки</div>
+  <button class="primary" onclick="order('Убийца Тюльки')">Заказать видео</button>
+</div>
 
-  <div class="card">
-    <video controls preload="metadata">
-      <source src="videos/ded3.mp4" type="video/mp4">
-    </video>
-    <div class="title">Дед 3</div>
-  </div>
+<div class="card">
+  <video src="videos/ded2.mp4" controls></video>
+  <div class="card-title">Гуру Улиц</div>
+  <button class="primary" onclick="order('Гуру Улиц')">Заказать видео</button>
+</div>
 
-  <div class="card">
-    <video controls preload="metadata">
-      <source src="videos/ded4.mp4" type="video/mp4">
-    </video>
-    <div class="title">Дед 4</div>
-  </div>
+<div class="card">
+  <video src="videos/ded3.mp4" controls></video>
+  <div class="card-title">МС Вампир</div>
+  <button class="primary" onclick="order('МС Вампир')">Заказать видео</button>
+</div>
 
-  <div class="card">
-    <video controls preload="metadata">
-      <source src="videos/ded5.mp4" type="video/mp4">
-    </video>
-    <div class="title">Дед 5</div>
-  </div>
+<div class="card">
+  <video src="videos/ded4.mp4" controls></video>
+  <div class="card-title">Опасный Дворовец</div>
+  <button class="primary" onclick="order('Опасный Дворовец')">Заказать видео</button>
+</div>
+
+<div class="card">
+  <video src="videos/ded5.mp4" controls></video>
+  <div class="card-title">Колючий Салодав</div>
+  <button class="primary" onclick="order('Колючий Салодав')">Заказать видео</button>
+</div>
+
 </div>
 
 <script>
-  function confirmAdult() {
-    localStorage.setItem("adultConfirmed", "yes");
-    document.getElementById("adult").style.display = "none";
-  }
+function confirmAge(){
+  localStorage.setItem("age_ok","1");
+  document.getElementById("ageModal").classList.add("hidden");
+}
 
-  if (localStorage.getItem("adultConfirmed") === "yes") {
-    document.getElementById("adult").style.display = "none";
-  }
+function order(name){
+  document.getElementById("orderTitle").innerText = name;
+  document.getElementById("orderModal").classList.remove("hidden");
+}
+
+function closeOrder(){
+  document.getElementById("orderModal").classList.add("hidden");
+}
+
+function fakePay(){
+  alert("Оплата будет подключена позже. Заказ принят.");
+  closeOrder();
+}
+
+if(!localStorage.getItem("age_ok")){
+  document.getElementById("ageModal").classList.remove("hidden");
+}
 </script>
 
 </body>
