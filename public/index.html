@@ -2,9 +2,64 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rap Deds</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .box {
+      max-width: 320px;
+      padding: 20px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #ff2e2e;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <h1>Mini App работает</h1>
+
+<div class="box" id="age">
+  <h2>⚠️ 18+</h2>
+  <p>
+    Контент содержит ненормативную лексику<br>
+    и предназначен для лиц старше 18 лет.
+  </p>
+  <button onclick="enter()">Мне есть 18</button>
+</div>
+
+<div class="box" id="app" style="display:none;">
+  <h2>🔥 Rap Deds</h2>
+  <p>Скоро здесь будут видео.</p>
+</div>
+
+<script>
+  if (localStorage.getItem('age_ok')) {
+    document.getElementById('age').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+
+  function enter() {
+    localStorage.setItem('age_ok', '1');
+    document.getElementById('age').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+</script>
+
 </body>
 </html>
