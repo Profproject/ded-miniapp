@@ -1,20 +1,14 @@
-function openVideo(file) {
-  const modal = document.getElementById('modal');
-  const player = document.getElementById('player');
-
-  player.src = `/videos/${file}`;
-  modal.style.display = 'flex';
-
-  // важно для iOS
-  player.muted = false;
-  player.play().catch(() => {});
+function order() {
+  alert("Оплата и заказ будут подключены позже");
 }
 
-function closeModal() {
-  const modal = document.getElementById('modal');
-  const player = document.getElementById('player');
+// автопауза других видео
+const videos = document.querySelectorAll("video");
 
-  player.pause();
-  player.src = '';
-  modal.style.display = 'none';
-}
+videos.forEach(v => {
+  v.addEventListener("play", () => {
+    videos.forEach(o => {
+      if (o !== v) o.pause();
+    });
+  });
+});
