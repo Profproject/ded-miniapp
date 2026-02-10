@@ -1,49 +1,84 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Rap Deds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="title">🔥 Rap Deds</h1>
+  <h1 class="title">🔥 Rap Deds</h1>
 
-<div class="grid">
+  <div class="grid">
 
-  <div class="card">
-    <video src="videos/ded1.mp4" controls preload="metadata"></video>
-    <h3>Убийца Тюльки</h3>
-    <button onclick="order()">Заказать видео</button>
+    <!-- 1 -->
+    <div class="card">
+      <video
+        src="videos/ded1.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        onclick="playVideo(this)">
+      </video>
+      <div class="name">Убийца Тюльки</div>
+      <button onclick="order('Убийца Тюльки')">Заказать видео</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <video
+        src="videos/ded2.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        onclick="playVideo(this)">
+      </video>
+      <div class="name">Гуру Улиц</div>
+      <button onclick="order('Гуру Улиц')">Заказать видео</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <video
+        src="videos/ded3.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        onclick="playVideo(this)">
+      </video>
+      <div class="name">МС Вампир</div>
+      <button onclick="order('МС Вампир')">Заказать видео</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <video
+        src="videos/ded4.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        onclick="playVideo(this)">
+      </video>
+      <div class="name">Опасный Дворовец</div>
+      <button onclick="order('Опасный Дворовец')">Заказать видео</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <video
+        src="videos/ded5.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        onclick="playVideo(this)">
+      </video>
+      <div class="name">Колючий Салодав</div>
+      <button onclick="order('Колючий Салодав')">Заказать видео</button>
+    </div>
+
   </div>
 
-  <div class="card">
-    <video src="videos/ded2.mp4" controls preload="metadata"></video>
-    <h3>Гуру Улиц</h3>
-    <button onclick="order()">Заказать видео</button>
-  </div>
-
-  <div class="card">
-    <video src="videos/ded3.mp4" controls preload="metadata"></video>
-    <h3>МС Вампир</h3>
-    <button onclick="order()">Заказать видео</button>
-  </div>
-
-  <div class="card">
-    <video src="videos/ded4.mp4" controls preload="metadata"></video>
-    <h3>Опасный Дворовец</h3>
-    <button onclick="order()">Заказать видео</button>
-  </div>
-
-  <div class="card">
-    <video src="videos/ded5.mp4" controls preload="metadata"></video>
-    <h3>Колючий Салодав</h3>
-    <button onclick="order()">Заказать видео</button>
-  </div>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
