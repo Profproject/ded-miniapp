@@ -1,84 +1,116 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rap Deds</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <h1 class="title">🔥 Rap Deds</h1>
+<h1 class="title">🔥 Rap Deds</h1>
 
-  <div class="grid">
+<div class="grid">
 
-    <!-- 1 -->
-    <div class="card">
-      <video
-        src="videos/ded1.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        onclick="playVideo(this)">
-      </video>
-      <div class="name">Убийца Тюльки</div>
-      <button onclick="order('Убийца Тюльки')">Заказать видео</button>
-    </div>
+  <!-- Дед 1 -->
+  <div class="card">
+    <video
+      id="ded1"
+      src="videos/ded1.mp4"
+      muted
+      playsinline
+      preload="metadata"
+    ></video>
 
-    <!-- 2 -->
-    <div class="card">
-      <video
-        src="videos/ded2.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        onclick="playVideo(this)">
-      </video>
-      <div class="name">Гуру Улиц</div>
-      <button onclick="order('Гуру Улиц')">Заказать видео</button>
-    </div>
+    <div class="name">Убийца Тюльки</div>
 
-    <!-- 3 -->
-    <div class="card">
-      <video
-        src="videos/ded3.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        onclick="playVideo(this)">
-      </video>
-      <div class="name">МС Вампир</div>
-      <button onclick="order('МС Вампир')">Заказать видео</button>
-    </div>
-
-    <!-- 4 -->
-    <div class="card">
-      <video
-        src="videos/ded4.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        onclick="playVideo(this)">
-      </video>
-      <div class="name">Опасный Дворовец</div>
-      <button onclick="order('Опасный Дворовец')">Заказать видео</button>
-    </div>
-
-    <!-- 5 -->
-    <div class="card">
-      <video
-        src="videos/ded5.mp4"
-        controls
-        playsinline
-        preload="metadata"
-        onclick="playVideo(this)">
-      </video>
-      <div class="name">Колючий Салодав</div>
-      <button onclick="order('Колючий Салодав')">Заказать видео</button>
-    </div>
-
+    <button onclick="playVideo('ded1')">▶ Смотреть</button>
+    <button class="order">Заказать видео</button>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Дед 2 -->
+  <div class="card">
+    <video
+      id="ded2"
+      src="videos/ded2.mp4"
+      muted
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="name">Гуру Улиц</div>
+
+    <button onclick="playVideo('ded2')">▶ Смотреть</button>
+    <button class="order">Заказать видео</button>
+  </div>
+
+  <!-- Дед 3 -->
+  <div class="card">
+    <video
+      id="ded3"
+      src="videos/ded3.mp4"
+      muted
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="name">MC Вампир</div>
+
+    <button onclick="playVideo('ded3')">▶ Смотреть</button>
+    <button class="order">Заказать видео</button>
+  </div>
+
+  <!-- Дед 4 -->
+  <div class="card">
+    <video
+      id="ded4"
+      src="videos/ded4.mp4"
+      muted
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="name">Опасный Дворовец</div>
+
+    <button onclick="playVideo('ded4')">▶ Смотреть</button>
+    <button class="order">Заказать видео</button>
+  </div>
+
+  <!-- Дед 5 -->
+  <div class="card">
+    <video
+      id="ded5"
+      src="videos/ded5.mp4"
+      muted
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="name">Колючий Салодав</div>
+
+    <button onclick="playVideo('ded5')">▶ Смотреть</button>
+    <button class="order">Заказать видео</button>
+  </div>
+
+</div>
+
+<script>
+  function playVideo(id) {
+    const video = document.getElementById(id);
+
+    // стопаем остальные
+    document.querySelectorAll("video").forEach(v => {
+      if (v !== video) {
+        v.pause();
+        v.currentTime = 0;
+        v.muted = true;
+      }
+    });
+
+    video.muted = false;
+    video.play();
+  }
+</script>
+
 </body>
 </html>
